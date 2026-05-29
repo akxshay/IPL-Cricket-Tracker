@@ -1,0 +1,125 @@
+﻿/* ============================================
+   IPL TRACKER — Base Styles & Design Tokens
+   Commit #1: Project Initialization
+   ============================================ */
+
+/* --- CSS Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+/* --- Design Tokens (CSS Custom Properties) --- */
+:root {
+  /* Brand Colors */
+  --color-primary:       #FF6B00;   /* IPL orange */
+  --color-primary-dark:  #CC5500;
+  --color-primary-light: #FF8C38;
+  --color-accent:        #FFD700;   /* Gold for highlights */
+  --color-danger:        #E63946;
+  --color-success:       #2DC653;
+
+  /* Surfaces */
+  --color-bg:            #0A0E1A;   /* Deep navy — night stadium */
+  --color-bg-card:       #111827;
+  --color-bg-elevated:   #1C2333;
+  --color-border:        rgba(255, 255, 255, 0.08);
+
+  /* Text */
+  --color-text-primary:  #F0F4FF;
+  --color-text-secondary:#8A96B0;
+  --color-text-muted:    #4A546A;
+
+  /* Typography */
+  --font-display: 'Rajdhani', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  /* Spacing Scale (8px base) */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Border Radius */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-xl:  32px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 32px rgba(255, 107, 0, 0.2);
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* Layout */
+  --max-width: 1280px;
+  --nav-height: 64px;
+}
+
+/* --- Base Element Styles --- */
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+/* --- App Shell (placeholder) --- */
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.1em;
+}
