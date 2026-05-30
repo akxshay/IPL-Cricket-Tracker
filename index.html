@@ -10,10 +10,231 @@
 		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
-		<!-- App shell — content injected by JS -->
-		<div id="app">
-			<p>Loading IPL Tracker...</p>
-		</div>
+
+		<!-- ======= NAVBAR ======= -->
+		<nav class="navbar" id="navbar">
+			<div class="nav-container">
+
+				<!-- Logo -->
+				<a href="#" class="nav-logo" data-page="home">
+					<span class="logo-icon">🏏</span>
+					<span class="logo-text">
+						IPL<span class="logo-accent">Tracker</span>
+					</span>
+				</a>
+
+				<!-- Desktop Nav Links -->
+				<ul class="nav-links" id="navLinks">
+					<li>
+						<a href="#" class="nav-link active" data-page="home">Home</a>
+					</li>
+					<li>
+						<a href="#" class="nav-link" data-page="live">
+							<span class="live-dot"></span>Live
+						</a>
+					</li>
+					<li>
+						<a href="#" class="nav-link" data-page="schedule">Schedule</a>
+					</li>
+					<li>
+						<a href="#" class="nav-link" data-page="points">Points Table</a>
+					</li>
+					<li>
+						<a href="#" class="nav-link" data-page="teams">Teams</a>
+					</li>
+					<li>
+						<a href="#" class="nav-link" data-page="players">Players</a>
+					</li>
+				</ul>
+
+				<!-- Hamburger -->
+				<button class="hamburger" id="hamburger" aria-label="Toggle menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+
+			</div>
+		</nav>
+
+		<!-- ======= MAIN APP ======= -->
+		<main class="main" id="app">
+
+			<!-- HOME PAGE -->
+			<section class="page active" id="page-home">
+
+				<!-- Hero -->
+				<div class="hero">
+					<div class="hero-bg">
+						<div class="hero-orb orb-1"></div>
+						<div class="hero-orb orb-2"></div>
+						<div class="hero-grid"></div>
+					</div>
+					<div class="hero-content">
+						<div class="hero-badge">🏆 IPL 2026 Season</div>
+						<h1 class="hero-title">
+							Track Every <span class="text-orange">Ball.</span><br/>
+							Every <span class="text-gold">Boundary.</span><br/>
+							Every <span class="text-orange">Wicket.</span>
+						</h1>
+						<p class="hero-subtitle">
+							Real-time scores, live commentary, player stats and team standings — all in one place.
+						</p>
+						<div class="hero-actions">
+							<button class="btn btn-primary" data-page="live">
+								<span class="live-dot"></span> Watch Live
+							</button>
+							<button class="btn btn-ghost" data-page="schedule">
+								View Schedule →
+							</button>
+						</div>
+					</div>
+					<div class="hero-visual">
+						<div class="cricket-ball">
+							<div class="ball-inner">🏏</div>
+							<div class="ball-ring ring-1"></div>
+							<div class="ball-ring ring-2"></div>
+							<div class="ball-ring ring-3"></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Quick Stats Bar -->
+				<div class="stats-bar">
+					<div class="stat-item">
+						<span class="stat-number">10</span>
+						<span class="stat-label">Teams</span>
+					</div>
+					<div class="stat-divider"></div>
+					<div class="stat-item">
+						<span class="stat-number">74</span>
+						<span class="stat-label">Matches</span>
+					</div>
+					<div class="stat-divider"></div>
+					<div class="stat-item">
+						<span class="stat-number">200+</span>
+						<span class="stat-label">Players</span>
+					</div>
+					<div class="stat-divider"></div>
+					<div class="stat-item">
+						<span class="stat-number live-text">LIVE</span>
+						<span class="stat-label">Scores</span>
+					</div>
+				</div>
+
+				<!-- Section Previews -->
+				<div class="section-grid">
+					<div class="section-card" data-page="live">
+						<div class="section-card-icon">🔴</div>
+						<h3>Live Scores</h3>
+						<p>Follow every match ball by ball in real time</p>
+						<span class="section-card-arrow">→</span>
+					</div>
+					<div class="section-card" data-page="schedule">
+						<div class="section-card-icon">📅</div>
+						<h3>Schedule</h3>
+						<p>Upcoming fixtures, venues and match timings</p>
+						<span class="section-card-arrow">→</span>
+					</div>
+					<div class="section-card" data-page="points">
+						<div class="section-card-icon">🏆</div>
+						<h3>Points Table</h3>
+						<p>Live standings, NRR and qualification status</p>
+						<span class="section-card-arrow">→</span>
+					</div>
+					<div class="section-card" data-page="teams">
+						<div class="section-card-icon">👕</div>
+						<h3>Teams</h3>
+						<p>Squad details, captain info and team stats</p>
+						<span class="section-card-arrow">→</span>
+					</div>
+					<div class="section-card" data-page="players">
+						<div class="section-card-icon">👤</div>
+						<h3>Players</h3>
+						<p>Batting, bowling averages and career records</p>
+						<span class="section-card-arrow">→</span>
+					</div>
+					<div class="section-card" data-page="schedule">
+						<div class="section-card-icon">🏟️</div>
+						<h3>Stadiums</h3>
+						<p>Venue details, pitch reports and capacity</p>
+						<span class="section-card-arrow">→</span>
+					</div>
+				</div>
+
+			</section>
+
+			<!-- LIVE PAGE (placeholder) -->
+			<section class="page" id="page-live">
+				<div class="page-header">
+					<h2 class="page-title">
+						<span class="live-dot"></span> Live Scores
+					</h2>
+					<p class="page-subtitle">Real-time match updates</p>
+				</div>
+				<div class="placeholder-content">
+					<p>🔄 API integration coming in next commit...</p>
+				</div>
+			</section>
+
+			<!-- SCHEDULE PAGE (placeholder) -->
+			<section class="page" id="page-schedule">
+				<div class="page-header">
+					<h2 class="page-title">📅 Match Schedule</h2>
+					<p class="page-subtitle">Upcoming IPL 2026 fixtures</p>
+				</div>
+				<div class="placeholder-content">
+					<p>🔄 API integration coming in next commit...</p>
+				</div>
+			</section>
+
+			<!-- POINTS TABLE PAGE (placeholder) -->
+			<section class="page" id="page-points">
+				<div class="page-header">
+					<h2 class="page-title">🏆 Points Table</h2>
+					<p class="page-subtitle">IPL 2026 Standings</p>
+				</div>
+				<div class="placeholder-content">
+					<p>🔄 API integration coming in next commit...</p>
+				</div>
+			</section>
+
+			<!-- TEAMS PAGE (placeholder) -->
+			<section class="page" id="page-teams">
+				<div class="page-header">
+					<h2 class="page-title">👕 Teams</h2>
+					<p class="page-subtitle">All IPL 2026 franchises</p>
+				</div>
+				<div class="placeholder-content">
+					<p>🔄 API integration coming in next commit...</p>
+				</div>
+			</section>
+
+			<!-- PLAYERS PAGE (placeholder) -->
+			<section class="page" id="page-players">
+				<div class="page-header">
+					<h2 class="page-title">👤 Players</h2>
+					<p class="page-subtitle">Player profiles and statistics</p>
+				</div>
+				<div class="placeholder-content">
+					<p>🔄 API integration coming in next commit...</p>
+				</div>
+			</section>
+
+		</main>
+
+		<!-- ======= FOOTER ======= -->
+		<footer class="footer">
+			<div class="footer-container">
+				<div class="footer-logo">
+					🏏 <span>
+						IPL<span class="logo-accent">Tracker</span>
+					</span>
+				</div>
+				<p class="footer-text">Data powered by CricAPI · Built for cricket fans</p>
+				<p class="footer-copy">© 2026 IPLTracker. Not affiliated with BCCI or IPL.</p>
+			</div>
+		</footer>
 
 		<script src="js/app.js"></script>
 	</body>
