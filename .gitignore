@@ -2,6 +2,7 @@
 js/config.js
 .env
 *.env
+echo ".vs/" >> .gitignore
 
 # OS files
 .DS_Store
