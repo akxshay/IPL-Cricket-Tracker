@@ -1,18 +1,16 @@
+/**
+ * cricketAPI.js — Cricket API Service Layer
+ * Fixed: exact endpoints from Cricket API Free Data (RapidAPI)
+ */
+
 const CricketAPI = (() => {
-  // Provide a safe fallback if config.js is missing (e.g., after someone clones the repo)
-  const safeConfig = typeof CONFIG !== 'undefined' ? CONFIG : {
-    API_KEY: '',
-    BASE_URL: 'https://cricket-api-free-data.p.rapidapi.com',
-    API_HOST: 'cricket-api-free-data.p.rapidapi.com',
-    CACHE_DURATION: 60000
-  };
 
   const cache = new Map();
 
   function getCached(key) {
     const entry = cache.get(key);
     if (!entry) return null;
-    const isExpired = Date.now() - entry.timestamp > safeConfig.CACHE_DURATION;
+    const isExpired = Date.now() - entry.timestamp > CONFIG.CACHE_DURATION;
     if (isExpired) { cache.delete(key); return null; }
     return entry.data;
   }
@@ -38,7 +36,7 @@ const CricketAPI = (() => {
       const res = await fetch(url.toString(), {
         method: 'GET',
         headers: {
-          'x-rapidapi-key':  safeConfig.API_KEY,
+          'x-rapidapi-key':  CONFIG.API_KEY,
           'x-rapidapi-host': 'cricket-api-free-data.p.rapidapi.com',
           'Content-Type':    'application/json',
         },
@@ -56,66 +54,89 @@ const CricketAPI = (() => {
     }
   }
 
+  // ─── Endpoints ────────────────────────────────────────────
+
+  /** Live Scores */
   async function getLiveMatches() {
-    return request('cricket-livescores');
+    return request('cricket-livescores2');
   }
 
+  /** Fixtures - All */
   async function getAllFixtures() {
-    return request('cricket-fixtures');
+    return request('cricket-fixtures2');
   }
 
+  /** Fixtures - League (IPL) */
   async function getLeagueFixtures() {
-    return request('cricket-fixtures-leaguelist');
+    return request('cricket-fixtures-leaguelist2');
   }
 
+  /** Schedules - All */
   async function getAllSchedules() {
-    return request('cricket-schedule');
+    return request('cricket-schedule2');
   }
 
+  /** Schedules - League */
   async function getLeagueSchedules() {
-    return request('cricket-schedule-leaguelist');
+    return request('cricket-schedule-leaguelist2');
   }
 
+  /** Matches - Upcoming */
   async function getUpcomingMatches() {
-    return request('cricket-matches-upcoming');
+    return request('cricket-matches-upcoming2');
   }
 
+  /** Matches - Recent */
   async function getRecentMatches() {
-    return request('cricket-matches-recent');
+    return request('cricket-matches-recent2');
   }
 
+  /** Matches - Live */
   async function getLiveMatchList() {
-    return request('cricket-matches-live');
+    return request('cricket-matches-live2');
   }
 
+  /** Match - Scoreboard */
   async function getMatchScoreboard(matchId) {
     return request('cricket-match-scoreboard2', { matchId });
   }
 
+  /** Match - Info */
   async function getMatchInfo(matchId) {
     return request('cricket-match-info2', { matchId });
   }
 
+  /** Series - All */
   async function getAllSeries() {
-    return request('cricket-series');
+    return request('cricket-series2');
   }
 
+  /** Series - League */
   async function getLeagueSeries() {
-    return request('cricket-series-leaguelist');
+    return request('cricket-series-leaguelist2');
   }
 
+  /** Series - Info */
+  async function getSeriesInfo(seriesId) {
+    return request('cricket-series-list2', { seriesId });
+  }
+
+  /** Teams - All */
   async function getAllTeams() {
-    return request('cricket-teams');
+    return request('cricket-teams2');
   }
 
+  /** Teams - League */
   async function getLeagueTeams() {
-    return request('cricket-teams-leaguelist');
+    return request('cricket-teams-leaguelist2');
   }
 
+  /** Players - Get List */
   async function getAllPlayers(teamId) {
-    return request('cricket-players', { teamid: teamId });
+    return request('cricket-players2', { teamid: teamId });
   }
 
+  /** Clear cache */
   function clearCache() {
     cache.clear();
     console.log('[API] Cache cleared');
@@ -134,6 +155,7 @@ const CricketAPI = (() => {
     getMatchInfo,
     getAllSeries,
     getLeagueSeries,
+    getSeriesInfo,
     getAllTeams,
     getLeagueTeams,
     getAllPlayers,

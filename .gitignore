@@ -1,12 +1,23 @@
-# API Keys — never commit
+# Dependencies
+node_modules/
+package-lock.json
+
+# API Keys and Secrets
 js/config.js
 .env
 *.env
-echo ".vs/" >> .gitignore
 
-# OS files
+# IDEs and Editors
+.vs/
+.vscode/
+*.suo
+*.user
+
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
-
-# Editor
-.vscode/settings.json

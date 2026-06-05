@@ -1,13 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IPL Tracker 2026</title>
+  <title>IPL Tracker — Live Scores, Scorecards &amp; All Seasons</title>
+  <meta name="description" content="Track IPL matches live, view complete scorecards, browse all IPL seasons from 2008 to present, explore player profiles and team standings." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=8" />
 </head>
 <body>
 
@@ -24,6 +25,7 @@
           <span class="live-dot"></span>Live
         </a></li>
         <li><a href="#" class="nav-link" data-page="schedule">Schedule</a></li>
+        <li><a href="#" class="nav-link" data-page="history">Seasons</a></li>
         <li><a href="#" class="nav-link" data-page="points">Points Table</a></li>
         <li><a href="#" class="nav-link" data-page="teams">Teams</a></li>
         <li><a href="#" class="nav-link" data-page="players">Players</a></li>
@@ -40,7 +42,7 @@
     <!-- HOME PAGE -->
     <section class="page active" id="page-home">
 
-      <!-- Hero with real stadium background -->
+      <!-- Hero -->
       <div class="hero">
         <div class="hero-stadium-bg"></div>
         <div class="hero-overlay"></div>
@@ -49,18 +51,18 @@
             <div class="hero-badge">🏆 IPL 2026 — Live Season</div>
             <h1 class="hero-title">
               Where Every<br/>
-              <span class="text-orange">Boundary</span> &<br/>
+              <span class="text-orange">Boundary</span> &amp;<br/>
               <span class="text-gold">Wicket</span> Lives.
             </h1>
             <p class="hero-subtitle">
-              Real-time scores, player stats, team standings and match schedules — all in one stadium.
+              Real-time scores, full scorecards, player stats &amp; all 19 IPL seasons — everything cricket in one stadium.
             </p>
             <div class="hero-actions">
               <button class="btn btn-primary" data-page="live">
                 <span class="live-dot"></span> Watch Live
               </button>
-              <button class="btn btn-ghost" data-page="schedule">
-                View Schedule →
+              <button class="btn btn-ghost" data-page="history">
+                All Seasons →
               </button>
             </div>
           </div>
@@ -73,7 +75,7 @@
             </div>
             <div class="ticker-match" id="hero-ticker-content">
               <div class="ticker-team">
-                <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?w=40&h=40&fit=crop" alt="team" class="ticker-team-img" onerror="this.style.display='none'"/>
+                <div class="ticker-team-badge" style="background:#004BA0">MI</div>
                 <span>Mumbai Indians</span>
               </div>
               <div class="ticker-score-block">
@@ -81,13 +83,13 @@
                 <span class="ticker-overs">(18.2 ov)</span>
               </div>
               <div class="ticker-vs">VS</div>
-              <div class="ticker-team">
-                <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?w=40&h=40&fit=crop" alt="team" class="ticker-team-img" onerror="this.style.display='none'"/>
-                <span>CSK</span>
-              </div>
               <div class="ticker-score-block">
                 <span class="ticker-score">142/6</span>
                 <span class="ticker-overs">(16.0 ov)</span>
+              </div>
+              <div class="ticker-team">
+                <div class="ticker-team-badge" style="background:#FFCC00;color:#1a1a1a">CSK</div>
+                <span>CSK</span>
               </div>
             </div>
             <div class="ticker-status">MI need 45 runs in 10 balls</div>
@@ -116,8 +118,8 @@
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-number">200+</span>
-            <span class="stat-label">Players</span>
+            <span class="stat-number">19</span>
+            <span class="stat-label">Seasons</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
@@ -126,8 +128,8 @@
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-number">16</span>
-            <span class="stat-label">Stadiums</span>
+            <span class="stat-number">1000+</span>
+            <span class="stat-label">All-Time Matches</span>
           </div>
         </div>
       </div>
@@ -136,12 +138,12 @@
       <div class="features-section">
         <div class="features-header">
           <h2 class="features-title">Everything IPL, One Place</h2>
-          <p class="features-subtitle">From live ball-by-ball to career stats — we've got it all</p>
+          <p class="features-subtitle">From live ball-by-ball to 19 seasons of history — we've got it all</p>
         </div>
         <div class="section-grid">
 
           <div class="section-card section-card--featured" data-page="live">
-            <div class="section-card-bg" style="background-image:url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=400&h=200&fit=crop')"></div>
+            <div class="section-card-bg" style="background-image:url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&h=400&fit=crop')"></div>
             <div class="section-card-overlay"></div>
             <div class="section-card-content">
               <div class="section-card-icon">🔴</div>
@@ -151,22 +153,22 @@
             </div>
           </div>
 
-          <div class="section-card" data-page="schedule">
-            <div class="section-card-bg" style="background-image:url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=400&h=200&fit=crop')"></div>
+          <div class="section-card" data-page="history">
+            <div class="section-card-bg" style="background-image:url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=400&h=300&fit=crop')"></div>
             <div class="section-card-overlay"></div>
             <div class="section-card-content">
-              <div class="section-card-icon">📅</div>
-              <h3>Schedule</h3>
-              <p>Upcoming fixtures and venues</p>
-              <span class="section-card-cta">View Fixtures →</span>
+              <div class="section-card-icon">🏆</div>
+              <h3>All Seasons</h3>
+              <p>IPL 2008 through 2026 — every match &amp; scorecard</p>
+              <span class="section-card-cta">Explore History →</span>
             </div>
           </div>
 
           <div class="section-card" data-page="points">
-            <div class="section-card-bg" style="background-image:url('https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?w=400&h=200&fit=crop')"></div>
+            <div class="section-card-bg" style="background-image:url('https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?w=400&h=300&fit=crop')"></div>
             <div class="section-card-overlay"></div>
             <div class="section-card-content">
-              <div class="section-card-icon">🏆</div>
+              <div class="section-card-icon">📊</div>
               <h3>Points Table</h3>
               <p>Live standings and NRR</p>
               <span class="section-card-cta">See Standings →</span>
@@ -174,7 +176,7 @@
           </div>
 
           <div class="section-card" data-page="teams">
-            <div class="section-card-bg" style="background-image:url('https://images.unsplash.com/photo-1611175694984-9b56c046a120?w=400&h=200&fit=crop')"></div>
+            <div class="section-card-bg" style="background-image:url('https://images.unsplash.com/photo-1611175694984-9b56c046a120?w=400&h=300&fit=crop')"></div>
             <div class="section-card-overlay"></div>
             <div class="section-card-content">
               <div class="section-card-icon">👕</div>
@@ -185,7 +187,7 @@
           </div>
 
           <div class="section-card" data-page="players">
-            <div class="section-card-bg" style="background-image:url('https://images.unsplash.com/photo-1593341646782-e0b495cff86d?w=400&h=200&fit=crop')"></div>
+            <div class="section-card-bg" style="background-image:url('https://images.unsplash.com/photo-1593341646782-e0b495cff86d?w=400&h=300&fit=crop')"></div>
             <div class="section-card-overlay"></div>
             <div class="section-card-content">
               <div class="section-card-icon">👤</div>
@@ -196,13 +198,13 @@
           </div>
 
           <div class="section-card" data-page="schedule">
-            <div class="section-card-bg" style="background-image:url('https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=400&h=200&fit=crop')"></div>
+            <div class="section-card-bg" style="background-image:url('https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=400&h=300&fit=crop')"></div>
             <div class="section-card-overlay"></div>
             <div class="section-card-content">
-              <div class="section-card-icon">🏟️</div>
-              <h3>Stadiums</h3>
-              <p>Venues, pitch reports and capacity</p>
-              <span class="section-card-cta">Explore →</span>
+              <div class="section-card-icon">📅</div>
+              <h3>Schedule</h3>
+              <p>Upcoming fixtures &amp; recent results</p>
+              <span class="section-card-cta">View Fixtures →</span>
             </div>
           </div>
 
@@ -218,7 +220,7 @@
           <h2 class="page-title"><span class="live-dot"></span> Live Scores</h2>
           <p class="page-subtitle">Real-time match updates</p>
         </div>
-        <button class="btn btn-ghost refresh-btn" onclick="loadLiveScores()">🔄 Refresh</button>
+        <button class="btn btn-ghost refresh-btn" id="live-refresh-btn">🔄 Refresh</button>
       </div>
       <div class="matches-grid" id="live-container"></div>
     </section>
@@ -228,23 +230,61 @@
       <div class="page-header">
         <div>
           <h2 class="page-title">📅 Match Schedule</h2>
-          <p class="page-subtitle">Upcoming fixtures</p>
+          <p class="page-subtitle">IPL 2026 fixtures and results</p>
         </div>
-        <button class="btn btn-ghost refresh-btn" onclick="loadUpcomingMatches()">🔄 Refresh</button>
+        <button class="btn btn-ghost refresh-btn" id="schedule-refresh-btn">🔄 Refresh</button>
+      </div>
+      <div class="tabs-wrap">
+        <div class="tabs" id="schedule-tabs">
+          <button class="tab-btn active" data-tab="upcoming" id="tab-upcoming">Upcoming</button>
+          <button class="tab-btn" data-tab="recent" id="tab-recent">Recent Results</button>
+        </div>
       </div>
       <div class="matches-grid" id="schedule-container"></div>
+    </section>
+
+    <!-- HISTORY / SEASONS PAGE -->
+    <section class="page" id="page-history">
+      <div class="page-header" id="history-page-header">
+        <div>
+          <h2 class="page-title" id="history-title">🏆 IPL Seasons</h2>
+          <p class="page-subtitle" id="history-subtitle">Browse all 19 IPL seasons (2008–2026)</p>
+        </div>
+        <button class="btn btn-ghost" id="history-back-btn" style="display:none">← Back to Seasons</button>
+      </div>
+      <div id="history-container"></div>
+    </section>
+
+    <!-- SCORECARD PAGE -->
+    <section class="page" id="page-scorecard">
+      <div class="page-header">
+        <div>
+          <h2 class="page-title">📋 Match Scorecard</h2>
+          <p class="page-subtitle" id="scorecard-match-label">Loading match details...</p>
+        </div>
+        <button class="btn btn-ghost" id="scorecard-back-btn">← Back</button>
+      </div>
+      <div id="scorecard-container"></div>
     </section>
 
     <!-- POINTS TABLE PAGE -->
     <section class="page" id="page-points">
       <div class="page-header">
         <div>
-          <h2 class="page-title">🏆 Points Table</h2>
+          <h2 class="page-title">📊 Points Table</h2>
           <p class="page-subtitle">IPL 2026 Standings</p>
         </div>
         <button class="btn btn-ghost refresh-btn" onclick="loadPointsTable()">🔄 Refresh</button>
       </div>
       <div class="points-wrap" id="points-container"></div>
+    </section>
+
+    <!-- TEAM PROFILE PAGE -->
+    <section class="page" id="page-team-profile">
+      <div class="page-header" style="margin-bottom:var(--space-4);">
+        <button class="back-btn" id="team-profile-back-btn">← Back to Teams</button>
+      </div>
+      <div id="team-profile-container"></div>
     </section>
 
     <!-- TEAMS PAGE -->
@@ -263,15 +303,46 @@
       <div class="page-header">
         <div>
           <h2 class="page-title">👤 Players</h2>
-          <p class="page-subtitle">Player profiles and statistics</p>
+          <p class="page-subtitle">IPL player profiles and statistics</p>
         </div>
       </div>
-      <div class="placeholder-content">
-        <p>🔄 Coming in next commit...</p>
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label class="filter-label" for="player-team-select">Select Team</label>
+          <select class="filter-select" id="player-team-select">
+            <option value="">— Choose a team —</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label" for="player-role-select">Filter by Role</label>
+          <select class="filter-select" id="player-role-select">
+            <option value="">All Roles</option>
+            <option value="bat">Batsman</option>
+            <option value="bowl">Bowler</option>
+            <option value="ar">All-Rounder</option>
+            <option value="wk">Wicket-Keeper</option>
+          </select>
+        </div>
+      </div>
+      <div class="players-grid" id="players-container">
+        <div class="empty-state players-placeholder">
+          <div class="empty-icon">👕</div>
+          <h3>Select a Team</h3>
+          <p>Choose an IPL team above to view their full squad</p>
+        </div>
       </div>
     </section>
 
   </main>
+
+  <!-- PLAYER MODAL -->
+  <div id="player-modal" class="modal" style="display:none;">
+    <div class="modal-overlay" id="player-modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="player-modal-close">×</button>
+      <div id="player-modal-body"></div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -282,8 +353,10 @@
     </div>
   </footer>
 
-  <script src="js/config.js"></script>
-  <script src="js/cricketAPI.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/config.js?v=8"></script>
+  <script src="js/cricketAPI.js?v=8"></script>
+  <script src="js/assetsData.js?v=8"></script>
+  <script src="js/offlineData.js?v=8"></script>
+  <script src="js/app.js?v=8"></script>
 </body>
 </html>
