@@ -244,6 +244,18 @@ async function openOfflineScorecard(matchId, fromPage) {
   document.getElementById('scorecard-match-label').textContent = `${match.t1} vs ${match.t2}`;
   
   showSpinner('scorecard-container', false);
+  
+  if (window.OFFLINE_SCORECARDS && window.OFFLINE_SCORECARDS[matchId]) {
+    const offlineSc = window.OFFLINE_SCORECARDS[matchId];
+    offlineSc.result = match.winner ? `${match.winner} won` : match.result;
+    offlineSc.playerOfMatch = match.pom;
+    offlineSc.venue = match.venue;
+    offlineSc.date = match.date;
+    offlineSc.toss = `${match.toss_winner} won the toss`;
+    renderScorecardPage(offlineSc, match.t1, match.t2, true);
+    return;
+  }
+
   try {
     const data = await CricketAPI.getMatchScoreboard(matchId);
     const sc = data?.response || data?.data;
