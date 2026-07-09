@@ -236,31 +236,38 @@ function openScorecard(matchId, t1, t2, fromPage) {
   document.getElementById('scorecard-match-label').textContent = `${t1} vs ${t2}`;
   loadLiveScorecardFromApi(matchId, t1, t2);
 }
-function openOfflineScorecard(matchId, fromPage) {
+async function openOfflineScorecard(matchId, fromPage) {
   scorecardFrom = fromPage || lastPage;
   navigateTo('scorecard', scorecardFrom);
   const match = ALL_MATCHES.find(m => m.id === matchId);
   if (!match) return;
   document.getElementById('scorecard-match-label').textContent = `${match.t1} vs ${match.t2}`;
   
-  const t1Roster = match.t1_players ? match.t1_players.split(',').map(p=>p.trim()) : [];
-  const t2Roster = match.t2_players ? match.t2_players.split(',').map(p=>p.trim()) : [];
-
-  const createInnings = (team, roster) => {
-    const batting = roster.slice(0, 7).map((p, i) => ({
-      name: p, dismissal: i < 5 ? 'c fielder b bowler' : 'not out', runs: Math.floor(Math.random() * 60) + (i<3?20:0), balls: Math.floor(Math.random() * 40) + 10,
-      fours: Math.floor(Math.random() * 6), sixes: Math.floor(Math.random() * 3), notOut: i >= 5
-    }));
-    batting.forEach(b => b.sr = ((b.runs/b.balls)*100).toFixed(1));
-    const totalRuns = batting.reduce((a,b)=>a+b.runs, 0) + 12;
-    return { team, r: totalRuns, w: 5, o: '20.0', rr: (totalRuns/20).toFixed(2), batting, extras: { wd:4, nb:1, b:2, lb:5 } };
-  };
-
-  const sc = {
-    result: match.winner ? `${match.winner} won` : match.result, playerOfMatch: match.pom, venue: match.venue, date: match.date,
-    toss: `${match.toss_winner} won the toss`, innings: [ createInnings(match.t1, t1Roster), createInnings(match.t2, t2Roster) ]
-  };
-  renderScorecardPage(sc, match.t1, match.t2, true);
+  showSpinner('scorecard-container', false);
+  try {
+    const data = await CricketAPI.getMatchScoreboard(matchId);
+    const sc = data?.response || data?.data;
+    if (!sc || !sc.score || !sc.score.length) throw new Error('API Scorecard missing');
+    
+    // Inject our local metadata into the API response to guarantee it's there
+    sc.result = match.winner ? `${match.winner} won` : match.result;
+    sc.playerOfMatch = match.pom;
+    renderScorecardPage(sc, match.t1, match.t2, true);
+  } catch (err) {
+    // API failed or no detailed score, render fallback with just the basic offline data
+    const sc = {
+      result: match.winner ? `${match.winner} won` : match.result, 
+      playerOfMatch: match.pom, 
+      venue: match.venue, 
+      date: match.date,
+      toss: `${match.toss_winner} won the toss`, 
+      innings: [
+        { team: match.t1, r: '-', w: '-', o: '-', batting: [] },
+        { team: match.t2, r: '-', w: '-', o: '-', batting: [] }
+      ]
+    };
+    renderScorecardPage(sc, match.t1, match.t2, true);
+  }
 }
 
 async function loadLiveScorecardFromApi(matchId, t1, t2) {
