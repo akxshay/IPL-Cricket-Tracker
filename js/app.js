@@ -52,7 +52,7 @@ function navigateTo(pageId, fromPage) {
 
   if (pageId === 'live') loadLiveScores();
   if (pageId === 'schedule') loadSchedule();
-  if (pageId === 'points') loadPointsTable(2024);
+  if (pageId === 'points') loadPointsTable(2026);
   if (pageId === 'teams') loadTeams();
   if (pageId === 'players') initPlayers();
   if (pageId === 'history') loadHistory();
@@ -368,6 +368,15 @@ function loadTeams() {
   populatePlayersTeamSelect();
 }
 
+function getTeamAliases(teamName) {
+  const t = teamName.toLowerCase();
+  if (t === 'royal challengers bangalore' || t === 'royal challengers bengaluru') return ['Royal Challengers Bangalore', 'Royal Challengers Bengaluru'];
+  if (t === 'delhi capitals' || t === 'delhi daredevils') return ['Delhi Capitals', 'Delhi Daredevils'];
+  if (t === 'punjab kings' || t === 'kings xi punjab') return ['Punjab Kings', 'Kings XI Punjab'];
+  if (t === 'rising pune supergiant' || t === 'rising pune supergiants') return ['Rising Pune Supergiant', 'Rising Pune Supergiants'];
+  return [teamName];
+}
+
 window.openTeamProfile = function(teamName) {
   navigateTo('team-profile', 'teams');
   const tInfo = getTeamInfo(teamName);
@@ -378,22 +387,24 @@ window.openTeamProfile = function(teamName) {
   const seasonPerf = {};
   const pomCounts = {};
 
+  const aliases = getTeamAliases(teamName);
+
   ALL_MATCHES.forEach(m => {
-    if (m.t1 !== teamName && m.t2 !== teamName) return;
+    if (!aliases.includes(m.t1) && !aliases.includes(m.t2)) return;
     matches++;
     const y = new Date(m.date).getFullYear();
     if (!seasonPerf[y]) seasonPerf[y] = { p:0, w:0, l:0 };
     seasonPerf[y].p++;
 
-    if (m.winner === teamName) { wins++; seasonPerf[y].w++; }
-    else if (m.winner && m.winner !== teamName) { losses++; seasonPerf[y].l++; }
+    if (aliases.includes(m.winner)) { wins++; seasonPerf[y].w++; }
+    else if (m.winner && !aliases.includes(m.winner)) { losses++; seasonPerf[y].l++; }
 
     if (m.venue) venues[m.venue] = (venues[m.venue] || 0) + 1;
 
     // Track MoM winners for this team
     if (m.pom) {
-      const isTeamPlayer = (m.t1 === teamName && m.t1_players && m.t1_players.includes(m.pom)) ||
-                           (m.t2 === teamName && m.t2_players && m.t2_players.includes(m.pom));
+      const isTeamPlayer = (aliases.includes(m.t1) && m.t1_players && m.t1_players.includes(m.pom)) ||
+                           (aliases.includes(m.t2) && m.t2_players && m.t2_players.includes(m.pom));
       if (isTeamPlayer) pomCounts[m.pom] = (pomCounts[m.pom] || 0) + 1;
     }
   });
@@ -406,7 +417,7 @@ window.openTeamProfile = function(teamName) {
     globalSeasons[y].matches++;
     if (globalSeasons[y].matches > 50) globalSeasons[y].winner = m.winner;
   });
-  Object.values(globalSeasons).forEach(s => { if (s.winner === teamName) trophies++; });
+  Object.values(globalSeasons).forEach(s => { if (aliases.includes(s.winner)) trophies++; });
 
   const winRate = matches ? ((wins/matches)*100).toFixed(1) : 0;
   const logoHtml = logoUrl ? `<img src="${logoUrl}" class="team-logo-img-large">` : `<h1 style="font-size:4rem">${tInfo.abbr}</h1>`;
