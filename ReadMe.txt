@@ -2,7 +2,7 @@
 
 A real-time IPL cricket tracking web application.
 
-## Features (planned)
+## Features 
 - Live scores
 - Upcoming match schedule
 - Points table
